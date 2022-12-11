@@ -116,36 +116,6 @@ TEST(count_order_disruptions_in_vector, test_unit_vector) {
     }
 }
 
-TEST(count_order_disruptions_in_vector, test_zero_vector) {
-    int rank;
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-
-    std::vector<int> vec;
-    const int vec_size = vec.size();
-
-    int  global_count = countOfDisruptionInVectorParallel(vec, vec_size);
-
-    if (rank == 0) {
-        int reference_count = countOfDisruptionInVector(vec);
-        ASSERT_EQ(global_count, reference_count);
-    }
-}
-
-TEST(count_order_disruptions_in_vector, test_zero_vector) {
-    int rank;
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-
-    std::vector<int> vec;
-    const int vec_size = vec.size();
-
-    int  global_count = countOfDisruptionInVectorParallel(vec, vec_size);
-
-    if (rank == 0) {
-        int reference_count = countOfDisruptionInVector(vec);
-        ASSERT_EQ(global_count, reference_count);
-    }
-}
-
 TEST(count_order_disruptions_in_vector, test_big_vector) {
     int rank;
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
